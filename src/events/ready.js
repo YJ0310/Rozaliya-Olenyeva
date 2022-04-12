@@ -1,5 +1,5 @@
 const client = require(`../../index`);
-const { token, guild_id } = require(`../../config.json`);
+const { guild_id, activities } = require(`../../config.json`);
 const { connect, schema_warnlist, schema_warn_record, connect_close } = require("../mongoose/mongoose");
 const { temp_channel_check, five_seconds_check } = require("../function/voice_channel_check");
 const { level } = require("../function/level");
@@ -24,7 +24,10 @@ module.exports = {
             });
         })
 
-        client.user.setActivity(`bot for testing`, { type: `WATCHING` });
+        setInterval(() => {
+            const activitiy = activities[Math.floor(Math.random(activitiy.length))]
+            client.user.setActivity(activitiy, { type: `WATCHING` });
+        }, 5000);
 
         await guild.commands.set(client.slashes).then(x => {console.log(`slash command for ${guild.name} set`)});
 
