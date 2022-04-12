@@ -10,6 +10,8 @@ module.exports = {
     description: `make a poll`,
     category: `common`,
     async execute(interaction, options) {
+        try {
+            
         if (!options) return;
         (async () => {
             let data = [];
@@ -46,7 +48,7 @@ module.exports = {
                 .setTitle(`Polls by ${interaction.member.nickname || interaction.user.username}`)
                 .setDescription(`\*\*${question}\*\*\n\n${data.map((x, i) => `${emoji[i]} ${x}`).join(`\n`)}`)
                 .addField(`Common Mode`, `Just for collecting idea`)
-                .setColor(`RANDOM`);
+                .setColor(interaction.member.roles.color?.hexColor ?? `#FFFFFF`);
                 if(adminKey && adminKey === true) {
                     embed.setFields([{
                         name: `Admin Mode`,
@@ -65,5 +67,9 @@ module.exports = {
                 console.error(err);
             }
         })();
+    } catch (error) {
+        console.error(error)
+        
+    }
     }
 }

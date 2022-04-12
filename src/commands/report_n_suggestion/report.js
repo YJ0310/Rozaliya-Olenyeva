@@ -20,7 +20,7 @@ module.exports = {
                             args.reply({embeds: [
                                 new MessageEmbed({
                                     title: `Command cancelled`,
-                                    color: `RANDOM`
+                                    color: interaction.member.roles.color?.hexColor ?? `#FFFFFF`
                                 })
                             ], ephemeral: true});
                             return setTimeout(() => {
@@ -32,7 +32,7 @@ module.exports = {
                                 new MessageEmbed({
                                     title: `Please comfirm your report in 1 minutes`,
                                     description: args.content,
-                                    color: `RANDOM`
+                                    color: interaction.member.roles.color?.hexColor ?? `#FFFFFF`
                                 })
                             ],
                             ephemeral: true,

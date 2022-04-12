@@ -45,7 +45,7 @@ module.exports = {
                     })
                 })
                 .catch(error => { console.error(error); });
-        }, 2000);
+        }, 3000);
     },
     async five_seconds_check() {
         setInterval(async () => {
@@ -68,7 +68,7 @@ module.exports = {
                     const member_channel = await voice_channel_xp_bonus.find(x => { return x.channels?.includes(member.voice.channel.parentId) || x.channels?.includes(member.voice.channel.id); });
                     if (!member_channel) return;
                     channel_bonus = member_channel.key;
-                    member_data.xp += await (((5 / 60) * (member_data.bonus + 1)) * channel_bonus);
+                    member_data.xp += await (((5 / 60) * (member_data.bonus + 1)) * channel_bonus * 2);
                     await member_data.save();
                 });
             });

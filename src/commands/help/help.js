@@ -7,24 +7,32 @@ module.exports = {
     async execute(interaction) {
         let command_list = [];
         // await interaction.client.commands.
-        await [`moderator`, `common`, `xp`].forEach( async element =>  {
+        await [`moderator`, `common`, `xp`].forEach(async element => {
             command_list.push(`\*\*${element}\*\*`);
-            client.commands.forEach( async (command) => {
-                if (command.category === element){
+            client.commands.forEach(async (command) => {
+                if (command.category === element) {
                     command_list.push(`\`${command.name}\` - \t ${command.description}`);
                 }
             })
             command_list.push(` `);
         });
-        return interaction.reply({
-            embeds: [
-                new MessageEmbed({
-                    title:`Command list`,
-                    description: command_list.join(`\n`),
-                    color: `RANDOM`
-                })
-            ],
-             ephemeral: true
-        });
+        try {
+            interaction.reply({
+                embeds: [
+                    new MessageEmbed({
+                        title: `Command list`,
+                        description: command_list.join(`\n`),
+                        color: interaction.member.roles.color?.hexColor ?? `#FFFFFF`
+                    })
+                ],
+                ephemeral: true
+            });
+        }
+        catch {
+            error => {
+                console.error(error);
+            }
+        }
+        return
     }
 };

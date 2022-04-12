@@ -13,7 +13,14 @@ module.exports = {
         const member_list = await xp_list.find({}).sort({ xp: -1 });
         const member_data = await member_list.find(element => element.id === user.id);
         // solution for if no data
-        if (!member_data) return interaction.reply({ content: `No data`, ephemeral: true });
+        if (!member_data) 
+        try {
+            return interaction.reply({ content: `No data`, ephemeral: true });
+            
+        } catch (error) {
+            console.error(error)
+            
+        }
         // rank
         const rank = (member_list.indexOf(member_data)) + 1;
         const level = member_data.level
@@ -33,8 +40,7 @@ module.exports = {
                     value: `${rank}`
                 }
             ])
-            .setColor(`RANDOM`);
-        // interaction.reply({ embeds: [embed], ephemeral: true });
+            .setColor(interaction.member.roles.color?.hexColor ?? `#FFFFFF`);
         const color = member.roles.color?.hexColor ?? `#FFFFFF`;
         const rank_picture = new Canvacord.Rank()
             .setAvatar(user.displayAvatarURL({ dynamic: true, format: `png` }))
@@ -50,10 +56,17 @@ module.exports = {
         rank_picture.build()
             .then(data => {
                 const attachment = new MessageAttachment(data);
-                return interaction.reply({
-                    files: [attachment],
-                    ephemeral: true
-                });
+                try {
+                    interaction.reply({
+                        files: [attachment],
+                        ephemeral: true
+                    });
+
+                } catch (error) {
+                    console.error(error)
+
+                }
+                return
             });
 
     }

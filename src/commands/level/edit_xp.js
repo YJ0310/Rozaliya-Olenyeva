@@ -8,7 +8,14 @@ module.exports = {
             const remove = options.getInteger(`remove`) ?? 0;
             const xp_lists = await require(`../../mongoose/schema_xp_list`);
             const member = options.getMember(`user`);
-            if (member.user.bot) return interaction.reply({ content: `User can't be bot`, ephemeral: true });
+            if (member.user.bot) 
+            try {
+                
+                return interaction.reply({ content: `User can't be bot`, ephemeral: true });
+            } catch (error) {
+                console.error(error)
+                
+            }
             let member_data = await xp_lists.findOne({ id: member.id });
             if (!member_data) {
                 member_data = new xp_lists({
@@ -20,13 +27,25 @@ module.exports = {
             member_data.xp -= remove;
             // avoid the xp < 0;
             if (member_data.xp < 0) member_data.xp = 0;
-            await member_data.save();
-            interaction.reply({ content: `edit completed`, ephemeral: true });
+            member_data.save();
+            try {
+                interaction.reply({ content: `edit completed`, ephemeral: true });
+            } catch (error) {
+                console.error(error)
+                
+            }
         }
         if (options.getSubcommand() === `clear`) {
             const xp_lists = await require(`../../mongoose/schema_xp_list`);
             const member = options.getMember(`user`);
-            if (member.user.bot) return interaction.reply({ content: `User can't be bot`, ephemeral: true });
+            (member.user.bot) 
+            try {
+                
+                return interaction.reply({ content: `User can't be bot`, ephemeral: true });
+            } catch (error) {
+                console.error(error)
+                
+            }
             let member_data = await xp_lists.findOne({ id: member.id });
             if (!member_data) {
                 member_data = new xp_lists({
@@ -35,8 +54,13 @@ module.exports = {
                 });
             }
             member_data.xp = 0;
-            await member_data.save();
-            interaction.reply({ content: `cleared`, ephemeral: true });
+            member_data.save();
+            try {
+                interaction.reply({ content: `cleared`, ephemeral: true });
+            } catch (error) {
+                console.error(error)
+                
+            }
         }
     }
 }

@@ -40,31 +40,5 @@ module.exports = {
         // react
         await message.react(`⬆`);
         await message.react(`⬇`);
-        // send the suggestion message id to the admin channel
-        const admin_channel = await get_config_data(`channels`, `suggestion_admin_channel`)
-        .then(async data => {
-            return guild.channels.cache.get(data.channel_id)
-        });
-        if(type === `report`) return;
-        await admin_channel.send({
-            embeds: [
-                new MessageEmbed({
-                    title: options.title,
-                    description: args.content,
-                    color: options.color,
-                    author: {
-                        name: args.author.tag,
-                        iconURL: args.author.displayAvatarURL({ dynamic: true })
-                    },
-                    fields: [
-                        {
-                            name: `message id`,
-                            value: message.id,
-                            inline: true
-                        }
-                    ]
-                })
-            ]
-        })
     }
 }

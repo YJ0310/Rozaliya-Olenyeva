@@ -21,7 +21,7 @@ module.exports = {
                             return dm_channel.send({embeds: [
                                 new MessageEmbed({
                                     title: `Command cancelled`,
-                                    color: `RANDOM`
+                                    color: interaction.member.roles.color?.hexColor ?? `#FFFFFF`
                                 })
                             ]});
                         }
@@ -30,7 +30,7 @@ module.exports = {
                                 new MessageEmbed({
                                     title: `Please comfirm your suggesstion in 1 minutes`,
                                     description: args.content,
-                                    color: `RANDOM`
+                                    color: interaction.member.roles.color?.hexColor ?? `#FFFFFF`
                                 })
                             ],
                             ephemeral: true,

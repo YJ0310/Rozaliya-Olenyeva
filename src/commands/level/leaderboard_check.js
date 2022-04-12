@@ -14,7 +14,14 @@ module.exports = {
         const rank = member_lists.indexOf(member_data) + 1;
         const page = options.getInteger(`page`) ?? Math.floor(rank / 10) + 1;
         // check whether the page is valid
-        if(page > Math.floor(rank / 10) + 1) return interaction.reply({content: `Invalid page`, ephemeral: true});
+        if(page > Math.floor(rank / 10) + 1) 
+        try {
+            
+            return interaction.reply({content: `Invalid page`, ephemeral: true});
+        } catch (error) {
+            console.error(error)
+            
+        }
         let pages = [];
         for (let index = 0; index < member_lists.length; index+=10) {
             pages.push(member_lists.slice(0, 9));
@@ -33,7 +40,13 @@ module.exports = {
         .setAuthor({name: interaction.client.user.tag, iconURL: interaction.client.user.displayAvatarURL({dynamic:true})})
         .setTitle(`Leaderboard (page ${page})`)
         .setDescription(leaderboard.join(`\n\n`))
-        .setColor(`RANDOM`)
-        interaction.reply({embeds: [embed], ephemeral: true});
+        .setColor(interaction.member.roles.color?.hexColor ?? `#FFFFFF`)
+        try {
+            
+            interaction.reply({embeds: [embed], ephemeral: true});
+        } catch (error) {
+            console.error(error)
+            
+        }
     }
 }

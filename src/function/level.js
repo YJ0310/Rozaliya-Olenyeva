@@ -41,7 +41,7 @@ module.exports = {
             });
             // sort the data with xp
             await xp_list.find().sort({ id: -1 });
-        }, 1000);
+        }, 5000);
 
     }
 }

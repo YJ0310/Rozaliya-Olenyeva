@@ -3,7 +3,7 @@ const { channels } = require(`../../config.json`)
 const { guild_f } = require("./guild");
 ;
 let embed = new MessageEmbed()
-    .setColor(`RANDOM`)
+    .setColor(`#FFFFFF`)
 const embed_setup = (user, title = null, description = null, color) => {
     embed
         .setAuthor({ name: user.tag, iconURL: user.displayAvatarURL({ dynamic: true }) })
@@ -13,7 +13,7 @@ const embed_setup = (user, title = null, description = null, color) => {
     if (description !== null) {
         embed.setTitle(description);
     }
-    embed.setColor(color ?? `RANDOM`)
+    embed.setColor(color ?? `#FFFFFF`)
 };
 async function DM_For_Help_category_f() {
     const guild = await guild_f();
