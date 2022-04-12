@@ -1,0 +1,42 @@
+module.exports = {
+    name: `xp`,
+    description: `modify xp`,
+    category: `moderator`,
+    async execute(interaction, options) {
+        if (options.getSubcommand() === `edit`) {
+            const give = options.getInteger(`give`) ?? 0;
+            const remove = options.getInteger(`remove`) ?? 0;
+            const xp_lists = await require(`../../mongoose/schema_xp_list`);
+            const member = options.getMember(`user`);
+            if (member.user.bot) return interaction.reply({ content: `User can't be bot`, ephemeral: true });
+            let member_data = await xp_lists.findOne({ id: member.id });
+            if (!member_data) {
+                member_data = new xp_lists({
+                    id: member.id,
+                    name: member.user.tag,
+                });
+            }
+            member_data.xp += give;
+            member_data.xp -= remove;
+            // avoid the xp < 0;
+            if (member_data.xp < 0) member_data.xp = 0;
+            await member_data.save();
+            interaction.reply({ content: `edit completed`, ephemeral: true });
+        }
+        if (options.getSubcommand() === `clear`) {
+            const xp_lists = await require(`../../mongoose/schema_xp_list`);
+            const member = options.getMember(`user`);
+            if (member.user.bot) return interaction.reply({ content: `User can't be bot`, ephemeral: true });
+            let member_data = await xp_lists.findOne({ id: member.id });
+            if (!member_data) {
+                member_data = new xp_lists({
+                    id: member.id,
+                    name: member.user.tag,
+                });
+            }
+            member_data.xp = 0;
+            await member_data.save();
+            interaction.reply({ content: `cleared`, ephemeral: true });
+        }
+    }
+}

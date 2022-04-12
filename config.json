@@ -1,0 +1,137 @@
+{
+    "prefix": "!",
+    "guild_id": "881450362538713108",
+    "token": "ODgzOTk3MDYyNjc1NDM1NTQx.YTSEaw.N0Ffed1XiBsQ4I_HyF_apsvL_m0",
+    "member_role_id": "",
+    "starting_level_xp": 60,
+    "xp_between_level": 30,
+    "level_roles": [
+        {
+            "main_key": "level"
+        },
+        {
+            "key": 10,
+            "role": "958560479876362240"
+        }
+    ],
+    "permissions": [
+        {
+            "main_key": "command"
+        },
+        {
+            "key": "dm",
+            "roles": []
+        },
+        {
+            "key": "mod",
+            "roles": []
+        },
+        {
+            "key": "suggest_mod",
+            "roles": []
+        },
+        {
+            "key": "xp",
+            "roles": []
+        },
+        {
+            "key": "delete_message",
+            "roles": []
+        },
+        {
+            "key": "poll",
+            "roles": []
+        },
+        {
+            "key": "temp_channel",
+            "roles": []
+        }
+    ],
+    "channels": [
+        {
+            "main_key": "type"
+        },
+        {
+            "key": "dm_for_help_category",
+            "channel_id": "918740671056187405"
+        },
+        {
+            "key": "temp_voice_channel_category",
+            "channel_id": "957439720806309960"
+        },
+        {
+            "key": "temp_voice_channel",
+            "channel_id": "959381503823990794"
+        },
+        {
+            "key": "suggestion_admin_channel",
+            "channel_id": "958279724369592320"
+        },
+        {
+            "key": "poll_channel",
+            "channel_id": "958279724369592320"
+        },
+        {
+            "key": "report",
+            "channel_id": "887332899685294100",
+            "title": "Report",
+            "color": "RED"
+        },
+        {
+            "key": "suggestion",
+            "channel_id": "887332899685294100",
+            "title": "Suggestion",
+            "color": "BLUE"
+        }
+    ],
+    "voice_channel_xp_bonus": [
+        {
+            "main_key": "bonus",
+            "channels_key": "category"
+        },
+        {
+            "key": 1,
+            "channels": [
+                "957439720806309960"
+            ]
+        },
+        {
+            "key": 2,
+            "channels": []
+        }
+    ],
+    "moderator_reason": {
+        "warn_reason": [
+            "Testing",
+            "讲粗口",
+            "黄色笑话",
+            "Spam"
+        ],
+        "ban_reason": []
+    },
+    "temp_channel_settings": {
+        "private": [],
+        "secret": [],
+        "allow_user": []
+    },
+    "daily_xp_amount": {
+        "min_value": 5,
+        "max_value": 60
+    },
+    "level_special_roles": [
+        {
+            "key": "884239462677221437",
+            "role": "958560479876362240"
+        }
+    ],
+    "to_do_list": {
+        "complete_to_do_list_xp": 5,
+        "vip_roles": [
+            {
+                "roles_id": "884239462677221437",
+                "amount": 12
+            }
+        ]
+    }
+
+}
