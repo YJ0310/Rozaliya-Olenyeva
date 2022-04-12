@@ -25,7 +25,7 @@ module.exports = {
         })
 
         setInterval(() => {
-            const activitiy = activities[Math.floor(Math.random(activitiy.length))]
+            const activitiy = activities[Math.floor(Math.random(activities.length))]
             client.user.setActivity(activitiy, { type: `WATCHING` });
         }, 5000);
 
