@@ -14,20 +14,20 @@ module.exports = {
         const rank = member_lists.indexOf(member_data) + 1;
         const page = options.getInteger(`page`) ?? Math.floor(rank / 10) + 1;
         // check whether the page is valid
-        if(page > Math.floor(rank / 10) + 1) 
+        if(page > Math.floor(member_lists.length / 10) + 1) 
         try {
             
-            return interaction.reply({content: `Invalid page`, ephemeral: true});
+            return interaction.editReply({content: `Invalid page`, ephemeral: true});
         } catch (error) {
             console.error(error)
             
         }
         let pages = [];
         for (let index = 0; index < member_lists.length; index+=10) {
-            pages.push(member_lists.slice(0, 9));
+            pages.push(member_lists.slice(index, index + 9));
         }
         let leaderboard = [];
-        pages[page - 1].map(async (member_lists_personal, ranking) => {
+        pages[page - 1].forEach(async (member_lists_personal, ranking) => {
             const name = member_lists_personal.name;
             const rank = ranking + 1 + ((page - 1) * 10);
             const xp = Math.floor(member_lists_personal.xp);
@@ -43,7 +43,7 @@ module.exports = {
         .setColor(interaction.member.roles.color?.hexColor ?? `#FFFFFF`)
         try {
             
-            interaction.reply({embeds: [embed], ephemeral: true});
+            interaction.editReply({embeds: [embed], ephemeral: true});
         } catch (error) {
             console.error(error)
             

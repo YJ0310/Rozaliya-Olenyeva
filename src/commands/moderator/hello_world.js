@@ -3,6 +3,6 @@ module.exports = {
     description: `hello world`,
     category: `common`,
     execute(interaction) {
-        interaction.reply({ content: `hello`, ephemeral: true });
+        interaction.editReply({ content: `hello`, ephemeral: true });
     }
 }

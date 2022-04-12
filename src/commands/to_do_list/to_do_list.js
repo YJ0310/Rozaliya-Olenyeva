@@ -5,6 +5,7 @@ const complete_to_do_list_xp = require(`../../../config.json`).to_do_list.comple
 module.exports = {
     name: `todo`,
     description: `to do list`,
+    category:  `common`,
     async execute(interaction, options) {
         try {
             
@@ -49,7 +50,8 @@ module.exports = {
 
         // output to do list panel
         try {
-            const to_do_list_panel = await interaction.reply({
+            interaction.editReply({content: `Done`})
+            const to_do_list_panel = await interaction.channel.send({
                 ephemeral: false,
                 embeds: [
                     new MessageEmbed({
@@ -232,6 +234,7 @@ module.exports = {
             const button_collector = to_do_list_panel.createMessageComponentCollector({ filter(x) { return x.user.id === interaction.user.id } })
             button_collector.on(`collect`, async button_interaction => {
 
+                button_interaction.deferReply({ephemeral: true});
 
 
                 // input button command
@@ -274,7 +277,7 @@ module.exports = {
 
                     // output
                     try {
-                        button_interaction.reply({
+                        button_interaction.editReply({
                             ephemeral: true,
                             embeds: [
                                 new MessageEmbed({
@@ -334,7 +337,7 @@ module.exports = {
                         await to_do_list_panel.edit({
                             embeds: [to_do_list_panel.embeds[0].setDescription(embed.description.join(`\n`))]
                         })
-                        button_interaction.reply({
+                        button_interaction.editReply({
                             content: `refreshed`,
                             ephemeral: true
                         });
@@ -347,14 +350,14 @@ module.exports = {
                 if (buttonId === `clear`) {
 
                     // check the cooldown
-                    if (to_do_list.clear_timestamp > Date.now()) return button_interaction.reply({
+                    if (to_do_list.clear_timestamp > Date.now()) return button_interaction.editReply({
                         content: `You already cleared your to do list. Please try again after <t:${Math.floor((to_do_list.clear_timestamp) / 1000)}:R>`,
                         ephemeral: true
                     });
 
 
                     // ask clear mode
-                    const clear_mode_selection = await button_interaction.reply({
+                    const clear_mode_selection = await button_interaction.editReply({
                         content: `Please choose a mode you want in 30 seconds`,
                         components: [
                             new MessageActionRow({
@@ -437,12 +440,12 @@ module.exports = {
                             await to_do_list_panel.edit({
                                 embeds: [to_do_list_panel.embeds[0].setDescription(embed.description.join(`\n`))]
                             })
-                            await clear_mode_selection_interaction.reply({
+                            await clear_mode_selection_interaction.editReply({
                                 content: `clear ${clear_mode_selection_interaction.values[0]}`,
                                 ephemeral: true
                             });
                         } catch (error) {
-                            await clear_mode_selection_interaction.reply({
+                            await clear_mode_selection_interaction.editReply({
                                 content: `fail to refresh the panel`,
                                 ephemeral: true
                             });
@@ -457,7 +460,7 @@ module.exports = {
                     await to_do_list_panel.delete();
 
                     // send message to collect input
-                    const change_quote_reply = await button_interaction.reply({
+                    const change_quote_reply = await button_interaction.editReply({
                         ephemeral: true,
                         content: `Please insert your new quote in 30 seconds or type \`cancel\` to cancel.`,
                         fetchReply: true

@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction, options) {
         interaction.user.createDM({ force: true }).then(async dm_channel => {
             try {
-                interaction.reply({
+                interaction.editReply({
                     content: `Please insert your report in 5 minutes or type "cancel" to cancel the command`,
                     ephemeral: true,
                     fetchReply: true,
@@ -61,11 +61,11 @@ module.exports = {
                                         if (comfirmation_interaction.customId === `check_comfirm`) {
                                             // send function
                                             await send_report_n_suggestions(args_deleted, `report`)
-                                            await comfirmation_interaction.reply({ content: `report comfirmed`, ephemeral: true });
+                                            await comfirmation_interaction.editReply({ content: `report comfirmed`, ephemeral: true });
                                             await comfirmation.delete()
                                         }
                                         if (comfirmation_interaction.customId === `check_cancel`) {
-                                            await comfirmation_interaction.reply({ content: `report cancelled`, ephemeral: true });
+                                            await comfirmation_interaction.editReply({ content: `report cancelled`, ephemeral: true });
                                             await comfirmation.delete()
                                         }
                                         return;

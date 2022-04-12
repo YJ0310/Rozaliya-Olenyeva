@@ -17,7 +17,7 @@ module.exports = {
             command_list.push(` `);
         });
         try {
-            interaction.reply({
+            interaction.editReply({
                 embeds: [
                     new MessageEmbed({
                         title: `Command list`,

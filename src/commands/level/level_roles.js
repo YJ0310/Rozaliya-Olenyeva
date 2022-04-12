@@ -16,7 +16,7 @@ module.exports = {
                     value: level_special_role.id
                 });
             })
-            const select_role = await interaction.reply({
+            const select_role = await interaction.editReply({
                 content: `Please select a role you want in 30 seconds`,
                 ephemeral: true,
                 fetchReply: true,
@@ -35,11 +35,11 @@ module.exports = {
             const user_selection_interaction = await select_role.awaitMessageComponent({ filter(reply_interaction) { return reply_interaction.user.id === interaction.user.id }, time: 30000, max: 1 }).catch(error => console.error(error));
             if (!user_selection_interaction) return;
             const role_require_id = await level_special_roles.find(x => { return x?.role === user_selection_interaction.values[0] });
-            if (role_require_id.key && !interaction.member.roles.cache.get(role_require_id.key)) return user_selection_interaction.reply({ content: `You don't have the role`, ephemeral: true });
+            if (role_require_id.key && !interaction.member.roles.cache.get(role_require_id.key)) return user_selection_interaction.editReply({ content: `You don't have the role`, ephemeral: true });
             if (options.getBoolean(`enable`) === true) {
                 try {
                     interaction.member.roles.add(user_selection_interaction.values[0]);
-                    return user_selection_interaction.reply({ content: `Role assigned`, ephemeral: true });
+                    return user_selection_interaction.editReply({ content: `Role assigned`, ephemeral: true });
                 } catch (error) {
                     console.error(error)
                 }
@@ -47,7 +47,7 @@ module.exports = {
             if (options.getBoolean(`enable`) === false) {
                 try {
                     interaction.member.roles.remove(user_selection_interaction.values[0]);
-                    return user_selection_interaction.reply({ content: `Role deassigned`, ephemeral: true });
+                    return user_selection_interaction.editReply({ content: `Role deassigned`, ephemeral: true });
                 } catch (error) {
                     console.error(error)
                 }

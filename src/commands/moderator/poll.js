@@ -57,7 +57,7 @@ module.exports = {
                 }
             try {
                 const msg = await channel.send({ embeds: [embed] });
-                const reply = await interaction.reply({ content: `Poll Send`, ephemeral: true })
+                const reply = await interaction.editReply({ content: `Poll Send`, ephemeral: true })
                 let i = 0;
                 while (i < data.length) {
                     await msg.react(`${emoji[i]}`);

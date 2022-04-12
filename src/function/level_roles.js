@@ -40,7 +40,6 @@ module.exports = {
             } catch (error) {
                 console.error(error)
             }
-            // sort the data with xp
         }, 5000);
 
     }

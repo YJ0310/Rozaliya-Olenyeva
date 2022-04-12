@@ -19,7 +19,7 @@ module.exports = {
         if (Date.now() < member_xp_list.daily_timestamp) 
         try {
 
-            interaction.reply({ content: `You already collect your reward. Please try it at <t:${Math.floor(member_xp_list.daily_timestamp / 1000)}:R>`, ephemeral: true });
+            interaction.editReply({ content: `You already collect your reward. Please try it at <t:${Math.floor(member_xp_list.daily_timestamp / 1000)}:R>`, ephemeral: true });
         } catch (error) {
             console.error(error)
         }
@@ -28,7 +28,7 @@ module.exports = {
         member_xp_list.daily_timestamp = Date.now() + (1000 * 3600 * 20);
         member_xp_list.save();
         try { 
-            interaction.reply({
+            interaction.editReply({
                 ephemeral: true,
                 embeds: [
                     new MessageEmbed({

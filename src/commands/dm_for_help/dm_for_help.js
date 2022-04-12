@@ -11,7 +11,7 @@ module.exports = {
             const DM_for_help_category = await DM_For_Help_category_f()
             if (interaction.channel.parent !== DM_for_help_category || interaction.channel.name === `modmail`) {
                 try {
-                    interaction.reply({ content: `Invalid channel`, ephemeral: true });
+                    interaction.editReply({ content: `Invalid channel`, ephemeral: true });
                 }
                 catch {
                     error => {
@@ -29,7 +29,7 @@ module.exports = {
             // check whether the user is a bot
             if (user.bot) {
                 try {
-                    interaction.reply({ content: `Invalid member`, ephemeral: true });
+                    interaction.editReply({ content: `Invalid member`, ephemeral: true });
                 }
                 catch {
                     error => {
@@ -45,7 +45,7 @@ module.exports = {
             let staff_channel = await guild.channels.cache.find(channel => channel.name === user.id);
             if (staff_channel) {
                 try {
-                    interaction.reply({ content: `Channel already opened <#${staff_channel.id}>`, ephemeral: true });
+                    interaction.editReply({ content: `Channel already opened <#${staff_channel.id}>`, ephemeral: true });
                 }
                 catch {
                     error => {
@@ -95,7 +95,7 @@ module.exports = {
 
             // respond
             try {
-                interaction.reply({ content: `Channel opened <#${staff_channel.id}>`, ephemeral: true });
+                interaction.editReply({ content: `Channel opened <#${staff_channel.id}>`, ephemeral: true });
             }
             catch {
                 error => {

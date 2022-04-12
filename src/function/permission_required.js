@@ -12,6 +12,6 @@ module.exports = {
         return member_role;
     },
     async no_permission_reply(interaction) {
-        interaction.reply({content: `you don't have this permission`, ephemeral: true});
+        interaction.editReply({content: `you don't have this permission`, ephemeral: true});
     }
 };

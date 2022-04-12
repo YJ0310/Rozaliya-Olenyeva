@@ -11,7 +11,7 @@ module.exports = {
             if (member.user.bot) 
             try {
                 
-                return interaction.reply({ content: `User can't be bot`, ephemeral: true });
+                return interaction.editReply({ content: `User can't be bot`, ephemeral: true });
             } catch (error) {
                 console.error(error)
                 
@@ -29,7 +29,7 @@ module.exports = {
             if (member_data.xp < 0) member_data.xp = 0;
             member_data.save();
             try {
-                interaction.reply({ content: `edit completed`, ephemeral: true });
+                interaction.editReply({ content: `edit completed`, ephemeral: true });
             } catch (error) {
                 console.error(error)
                 
@@ -41,7 +41,7 @@ module.exports = {
             (member.user.bot) 
             try {
                 
-                return interaction.reply({ content: `User can't be bot`, ephemeral: true });
+                return interaction.editReply({ content: `User can't be bot`, ephemeral: true });
             } catch (error) {
                 console.error(error)
                 
@@ -56,7 +56,7 @@ module.exports = {
             member_data.xp = 0;
             member_data.save();
             try {
-                interaction.reply({ content: `cleared`, ephemeral: true });
+                interaction.editReply({ content: `cleared`, ephemeral: true });
             } catch (error) {
                 console.error(error)
                 

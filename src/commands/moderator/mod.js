@@ -11,7 +11,7 @@ module.exports = {
 
             if (options.getSubcommand() === `warn`) {
                 const user = options.getMember(`user`)?.user;
-                if (!user) return interaction.reply({ content: `Invalid member`, ephemeral: true });
+                if (!user) return interaction.editReply({ content: `Invalid member`, ephemeral: true });
                 const moderator = interaction.user;
                 const reason = options.getString(`reason`) || `no reason`;
                 try {
@@ -26,7 +26,7 @@ module.exports = {
                         timestamp: Date.now()
                     });
                     try {
-                        interaction.reply({ content: `warn successfully`, ephemeral: true });
+                        interaction.editReply({ content: `warn successfully`, ephemeral: true });
 
                     } catch (error) {
                         console.error(error)
@@ -43,7 +43,7 @@ module.exports = {
                 const warn_list = await require(`../../mongoose/schema_warnlist`);
                 const warn_record = await require(`../../mongoose/schema_warn_record`);
                 const member_warn_record = await warn_record.find({ user_id: user.id, ban: false });
-                if (member_warn_record.length === 0) return interaction.reply({ content: `This member doesn't have any warning`, ephemeral: true });
+                if (member_warn_record.length === 0) return interaction.editReply({ content: `This member doesn't have any warning`, ephemeral: true });
                 let member_warn_record_list = [];
                 await member_warn_record.forEach(async x => {
                     member_warn_record_list.push({
@@ -55,7 +55,7 @@ module.exports = {
                     label: `cancel`,
                     value: `cancel`
                 })
-                const select_delete_warn = await interaction.reply({
+                const select_delete_warn = await interaction.editReply({
                     content: `Please select a warning in 30 seconds`,
                     ephemeral: true,
                     fetchReply: true,
@@ -95,7 +95,7 @@ module.exports = {
                     }
                 } else {
                     const member_id = options.getString(`user_id`);
-                    if (!member_id) return interaction.reply({ content: `Please select a user`, ephemeral: true });
+                    if (!member_id) return interaction.editReply({ content: `Please select a user`, ephemeral: true });
                     const guild = await guild_f();
                     try {
                         await guild.members.ban(member_id, { reason: reason });
@@ -125,7 +125,7 @@ module.exports = {
                 } catch (error) {
                     console.error(error);
                 }
-                return interaction.reply({ content: `ban successfully`, ephemeral: true });
+                return interaction.editReply({ content: `ban successfully`, ephemeral: true });
             }
 
             if (options.getSubcommand() === `unban`) {
@@ -134,7 +134,7 @@ module.exports = {
                 const reason = options.getString(`reason`) || `no reason`;
                 try {
                     await guild.members.unban(id, reason);
-                    interaction.reply({ content: `unban successfully`, ephemeral: true });
+                    interaction.editReply({ content: `unban successfully`, ephemeral: true });
                 } catch (error) {
                     console.error(error);
                     command_fail_interaction(interaction);
@@ -147,12 +147,12 @@ module.exports = {
                     const user = options.getMember(`user`).user;
                     const schema_warn_record = await require(`../../mongoose/schema_warn_record`);
                     const user_record = await schema_warn_record.find({ user_id: user.id, ban: false }).sort({ timestamp: 1 });
-                    if (user_record.length === 0) return interaction.reply({ content: `This member doesn't have any warning`, ephemeral: true });
+                    if (user_record.length === 0) return interaction.editReply({ content: `This member doesn't have any warning`, ephemeral: true });
                     let user_record_embed = [];
                     await user_record.map(async (element, index) => {
                         user_record_embed.push(`${index + 1}. ${element.reason}\nmoderator: ${element.moderator_tag}\ntimestamp: ${element.timestamp}`)
                     })
-                    return interaction.reply({
+                    return interaction.editReply({
                         ephemeral: true,
                         embeds: [
                             new MessageEmbed({
@@ -167,8 +167,8 @@ module.exports = {
                 await warn_list.map(async (element, index) => {
                     warn_list_embed.push(`${index + 1}. ${element.name}\nwarns: ${element.warns}`);
                 });
-                if (warn_list_embed.length === 0) return interaction.reply({ content: `Nobody got warned`, ephemeral: true });
-                return interaction.reply({
+                if (warn_list_embed.length === 0) return interaction.editReply({ content: `Nobody got warned`, ephemeral: true });
+                return interaction.editReply({
                     ephemeral: true,
                     embeds: [
                         new MessageEmbed({

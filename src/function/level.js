@@ -40,7 +40,7 @@ module.exports = {
 
             });
             // sort the data with xp
-            await xp_list.find().sort({ id: -1 });
+            await xp_list.find().sort({ xp: -1 });
         }, 5000);
 
     }
