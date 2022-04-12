@@ -13,13 +13,14 @@ module.exports = {
             await client.guilds.fetch(guild_id).then(async guild => {
                 const channels_data = await get_config_data(`channels`, `temp_voice_channel_category`);
                 const channels_id = channels_data.channel_id;
-                const channels = await guild.channels.cache.filter(channel => {return channel.parentId === channels_id});
+                const channels = await guild.channels.cache.filter(channel => { return channel.parentId === channels_id });
                 channels.forEach(async channel => {
                     const temp_channel_data = await get_config_data(`channels`, `temp_voice_channel`);
+                    if (!channel.isVoice()) return;
                     if (channel.members.size > 0) return;
                     if (channel.id === temp_channel_data.channel_id) return;
                     setTimeout(async () => {
-                        if(channel.members.size > 0) return;
+                        if (channel.members.size > 0) return;
                         channel.delete(`closing temp channel`);
                         try {
                             const temp_voice_channel_list = await require(`../mongoose/schema_temp_voice_channel`);
@@ -64,7 +65,7 @@ module.exports = {
                     // check the voice channel bonus
                     let channel_bonus = 0;
                     const { voice_channel_xp_bonus } = require(`../../config.json`);
-                    const member_channel = await voice_channel_xp_bonus.find(x => { return x.channels?.includes(member.voice.channel.parentId) || x.channels?.includes(member.voice.channel.id);});
+                    const member_channel = await voice_channel_xp_bonus.find(x => { return x.channels?.includes(member.voice.channel.parentId) || x.channels?.includes(member.voice.channel.id); });
                     if (!member_channel) return;
                     channel_bonus = member_channel.key;
                     member_data.xp += await (((5 / 60) * (member_data.bonus + 1)) * channel_bonus);

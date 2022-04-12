@@ -1,8 +1,8 @@
 {
     "prefix": "!",
-    "guild_id": "881450362538713108",
-    "token": "ODgzOTk3MDYyNjc1NDM1NTQx.YTSEaw.N0Ffed1XiBsQ4I_HyF_apsvL_m0",
-    "member_role_id": "",
+    "guild_id": "872976594858311710",
+    "token": "ODc4NjMxOTc1MjkwNzk4MTQw.YSD_yw.LgpPYysNBD2Lx4jdMTScruTWehE",
+    "member_role_id": "872976594858311710",
     "starting_level_xp": 60,
     "xp_between_level": 30,
     "level_roles": [
@@ -10,8 +10,52 @@
             "main_key": "level"
         },
         {
+            "key": 1,
+            "role": "872981244898586714"
+        },
+        {
+            "key": 5,
+            "role": "877850889258430465"
+        },
+        {
             "key": 10,
-            "role": "958560479876362240"
+            "role": "877850935915851817"
+        },
+        {
+            "key": 20,
+            "role": "877850981507952680"
+        },
+        {
+            "key": 30,
+            "role": "873057795300261938"
+        },
+        {
+            "key": 40,
+            "role": "877851028941332541"
+        },
+        {
+            "key": 50,
+            "role": "877851064152510545"
+        },
+        {
+            "key": 60,
+            "role": "877851111707521025"
+        },
+        {
+            "key": 70,
+            "role": "873058792554766379"
+        },
+        {
+            "key": 80,
+            "role": "877853880900284507"
+        },
+        {
+            "key": 90,
+            "role": "877853879113510922"
+        },
+        {
+            "key": 100,
+            "role": "877853875124699196"
         }
     ],
     "permissions": [
@@ -20,31 +64,31 @@
         },
         {
             "key": "dm",
-            "roles": []
+            "roles": ["873067971650674698", "873059397935460352"]
         },
         {
             "key": "mod",
-            "roles": []
-        },
-        {
-            "key": "suggest_mod",
-            "roles": []
+            "roles": [ "873059397935460352"]
         },
         {
             "key": "xp",
-            "roles": []
+            "roles": [ "873059397935460352"]
         },
         {
             "key": "delete_message",
-            "roles": []
+            "roles": [ "873059397935460352"]
         },
         {
             "key": "poll",
-            "roles": []
+            "roles": [
+                "877850935915851817"
+            ]
         },
         {
             "key": "temp_channel",
-            "roles": []
+            "roles": [
+                "877850889258430465"
+            ]
         }
     ],
     "channels": [
@@ -53,33 +97,29 @@
         },
         {
             "key": "dm_for_help_category",
-            "channel_id": "918740671056187405"
+            "channel_id": "879161761230639124"
         },
         {
             "key": "temp_voice_channel_category",
-            "channel_id": "957439720806309960"
+            "channel_id": "899969282467852289"
         },
         {
             "key": "temp_voice_channel",
-            "channel_id": "959381503823990794"
-        },
-        {
-            "key": "suggestion_admin_channel",
-            "channel_id": "958279724369592320"
+            "channel_id": "963318623248740363"
         },
         {
             "key": "poll_channel",
-            "channel_id": "958279724369592320"
+            "channel_id": "885275316157816892"
         },
         {
             "key": "report",
-            "channel_id": "887332899685294100",
+            "channel_id": "873490570813792306",
             "title": "Report",
             "color": "RED"
         },
         {
             "key": "suggestion",
-            "channel_id": "887332899685294100",
+            "channel_id": "885275316157816892",
             "title": "Suggestion",
             "color": "BLUE"
         }
@@ -92,12 +132,15 @@
         {
             "key": 1,
             "channels": [
-                "957439720806309960"
+                "872976595357429763",
+                "899969282467852289"
             ]
         },
         {
-            "key": 2,
-            "channels": []
+            "key": 3,
+            "channels": [
+                "963320883345256448"
+            ]
         }
     ],
     "moderator_reason": {
@@ -110,9 +153,15 @@
         "ban_reason": []
     },
     "temp_channel_settings": {
-        "private": [],
-        "secret": [],
-        "allow_user": []
+        "private": [
+            "877850935915851817"
+        ],
+        "secret": [
+            "873057795300261938"
+        ],
+        "allow_user": [
+            "877850981507952680"
+        ]
     },
     "daily_xp_amount": {
         "min_value": 5,
@@ -120,17 +169,53 @@
     },
     "level_special_roles": [
         {
-            "key": "884239462677221437",
-            "role": "958560479876362240"
+            "main_key": "role require"
+        },
+        {
+            "key": "877850935915851817",
+            "role": "893486340061143111"
+        },
+        {
+            "key": "877850981507952680",
+            "role": "893486441429086258"
+        },
+        {
+            "key": "873057795300261938",
+            "role": "893486468452978700"
+        },
+        {
+            "key": "877851028941332541",
+            "role": "893486505245421579"
+        },
+        {
+            "key": "877851064152510545",
+            "role": "893486530574835743"
+        },
+        {
+            "key": "877851111707521025",
+            "role": "893486563936305252"
+        },
+        {
+            "key": "873058792554766379",
+            "role": "873068217998913566"
+        },
+        {
+            "key": "877853880900284507",
+            "role": "893474209072832552"
+        },
+        {
+            "key": "877853879113510922",
+            "role": "893479844162199572"
+        },
+        {
+            "key": "877853875124699196",
+            "role": "893479797253083137"
         }
     ],
     "to_do_list": {
         "complete_to_do_list_xp": 5,
         "vip_roles": [
-            {
-                "roles_id": "884239462677221437",
-                "amount": 12
-            }
+            
         ]
     }
 

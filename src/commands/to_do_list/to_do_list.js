@@ -182,7 +182,7 @@ module.exports = {
             to_do_list.tasks = to_do_list.tasks.filter(x => { return x });
 
             // save the data
-            if (to_do_list.tasks.length > 5) return message.reply(`Full`);
+            if (to_do_list.tasks.length > 5) return message.reply(`You can only have 5 slots only. Press the help button under the panel to find how to get more slots`);
             await to_do_list.save();
 
             // map the to_do_list.task
