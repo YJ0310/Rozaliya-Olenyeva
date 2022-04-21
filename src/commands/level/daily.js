@@ -23,7 +23,6 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
-        return
         member_xp_list.xp += daily_xp_amount;
         member_xp_list.daily_timestamp = Date.now() + (1000 * 3600 * 20);
         member_xp_list.save();
