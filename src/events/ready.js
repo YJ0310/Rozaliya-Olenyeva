@@ -4,8 +4,8 @@ const { connect, schema_warnlist, schema_warn_record, connect_close } = require(
 const { temp_channel_check, five_seconds_check } = require("../function/voice_channel_check");
 const { level } = require("../function/level");
 const { check_warn_record } = require("../function/warn_record");
-const {level_roles} = require("../function/level_roles");
-async function guild_f () {
+const { level_roles } = require("../function/level_roles");
+async function guild_f() {
     const guild = await client.guilds.cache.get(guild_id);
     return guild;
 }
@@ -29,12 +29,12 @@ module.exports = {
             client.user.setActivity(activitiy, { type: `WATCHING` });
         }, 5000);
 
-        await guild.commands.set(client.slashes).then(x => {console.log(`slash command for ${guild.name} set`)});
+        await guild.commands.set(client.slashes).then(x => { console.log(`slash command for ${guild.name} set`) });
 
-        
+
         await require(`../../testing`)();
         console.log(`bot ready`);
-        
+
         // for add function
         temp_channel_check();
         five_seconds_check();
