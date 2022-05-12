@@ -12,7 +12,7 @@ module.exports = {
             const user = member.user;
             const xp_list = await require(`../../mongoose/schema_xp_list`);
             const member_list = await xp_list.find({});
-            member_list.sort((a, b) => { b.xp - a.xp });
+            member_list.sort((a, b) => { return b.xp - a.xp; });
             const member_data = member_list.find(element => element.id === user.id);
             // solution for if no data
             if (!member_data)

@@ -40,7 +40,7 @@ module.exports = {
             } catch (error) {
                 console.error(error)
             }
-        }, 5000);
+        }, 10000);
 
     }
 }

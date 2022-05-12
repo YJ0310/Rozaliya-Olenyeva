@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction, options) {
         const xp_lists = await require(`../../mongoose/schema_xp_list`);
         const member_lists = await xp_lists.find({});
-        member_lists.sort((a, b) => { b.xp - a.xp });
+        member_lists.sort((a, b) => { return b.xp - a.xp; });
         const member = interaction.member;
         const user = member.user;
         const member_data = member_lists.find( element => element.id === member.id);
