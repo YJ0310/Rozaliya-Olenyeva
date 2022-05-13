@@ -5,6 +5,9 @@
     "member_role_id": "963239273279144006",
     "starting_level_xp": 60,
     "xp_between_level": 30,
+    "activities": [
+        "dm to contact staff"
+    ],
     "level_roles": [
         {
             "main_key": "level"
