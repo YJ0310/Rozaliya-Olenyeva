@@ -1,8 +1,12 @@
 const { command_fail_interaction } = require("../function/command_fail");
 const { permissions } = require(`../../config.json`);
 const { user } = require("../..");
+const {Interaction} = require(`discord.js`);
 
 module.exports = {
+    /**
+     * @param {Interaction} interaction
+     */
     async execute(interaction) {
         if (interaction.user.bot) return;
 
